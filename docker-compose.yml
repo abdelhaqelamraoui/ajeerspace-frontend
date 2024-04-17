@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: ajeerspace-front-app
+    image: ajeerspace-front-app-img
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/react-app/src
+    ports:
+      - 3000:3000
