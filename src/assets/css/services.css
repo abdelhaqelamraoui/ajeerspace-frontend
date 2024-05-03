@@ -1,0 +1,260 @@
+.services {
+}
+
+.services .main {
+   padding: 24px var(--x-padding);
+   display: flex;
+   justify-content: space-between;
+   gap: 16px;
+}
+
+.services .main .profiles {
+   flex: 1;
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 16px;
+   /* overflow-y: scroll; */
+   /* TODO : fix its height and move and customize the scroller to the left */
+}
+
+.services .main .profiles .profile {
+   padding: 24px 20px;
+   padding-left: 30px;
+   background-color: var(--bg-color);
+   border: 1px solid rgba(0, 100, 0, 0.1);
+   border-radius: 4px;
+   /* box-shadow: 1px 1px 0px 0px var(--primary-color); FIXME : this is added */
+}
+
+.services .main .profiles .profile .profile-header {
+   display: flex;
+   justify-content: flex-start;
+   gap: 24px;
+   align-items: center;
+   padding-bottom: 16px;
+   /* border-bottom: 1px solid rgba(0, 100, 0, 0.1) !important; */
+}
+
+.services .main .profiles .profile .profile-header .profile-photo {
+   padding: 12px;
+   border: 1px solid var(--primary-color);
+   border-radius: 4px;
+   height: 82px;
+}
+
+.services .main .profiles .profile .profile-header > div {
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.services .main .profiles .profile .profile-header > div .profile-name {
+   font-size: 24px;
+   color: var(--secondary-color);
+}
+
+.services .main .profiles .profile .profile-header > div .profile-service {
+   font-size: 24px;
+   color: var(--text-color-white);
+   padding: 6px 10px;
+   text-align: left;
+   border-radius: 2px;
+   background-color: var(--secondary-color);
+}
+
+.services .main .profiles .profile .profile-body {
+   margin-top: 24px;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.iconed-info {
+   /* global class */
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 10px;
+}
+
+.services .main .profiles .profile .profile-body .iconed-info img {
+   width: 16px;
+}
+
+.services .main .profiles .profile .profile-body .iconed-info span {
+   font-size: 18px;
+}
+
+.services .main .search-results {
+   flex: 2;
+}
+
+.services .main .search-results .search {
+   width: 100%;
+}
+
+.search form {
+   display: flex;
+   justify-content: space-between;
+   gap: 0px;
+   border: 1px solid var(--secondary-color);
+   border-radius: 8px;
+}
+
+.search form > div {
+   flex: 1;
+   display: flex;
+   gap: 16px;
+   align-items: center;
+   justify-content: center;
+   padding: 1px 16px;
+   border: none;
+}
+.search form .btn {
+   border-bottom-right-radius: 8px;
+   border-top-right-radius: 8px;
+   border-bottom-left-radius: 0;
+   border-top-left-radius: 0;
+   border: none;
+}
+
+.search form > div div {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 14px;
+}
+
+.search form > div input::placeholder {
+   color: var(--text-color-lighter);
+   font-size: 17px;
+}
+
+.search form > div input:focus {
+   outline: none;
+   /* color: var(--accent-color); */
+}
+
+.search form > div input {
+   height: 100%;
+   border: none;
+   height: 40px;
+   background-color: transparent;
+   font-size: 16px;
+   font-weight: normal;
+}
+
+.search form > div img {
+}
+
+.search form div .separator {
+   width: 1px;
+   background-color: var(--primary-color);
+   height: 80%;
+}
+
+.search form button {
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   border-radius: 4px;
+}
+
+.search > p {
+   margin-top: 24px;
+   width: 100%;
+   font-size: 14px;
+   margin-left: 130px;
+}
+
+.search > p a {
+   text-decoration: underline;
+   color: var(--primary-color);
+}
+
+.services .main .search-results .search .filters {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 16px;
+   margin-top: 8px;
+}
+
+.services .main .search-results .search .filters button {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 16px;
+   font-size: 14px;
+   color: var(--primary-color);
+}
+
+.services .main .search-results .search .filters .choices {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   gap: 10px;
+}
+
+.services .main .search-results .search .filters .choices > div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 4px;
+}
+
+.services .main .search-results .search .filters .choices > div label {
+   color: var(--secondary-color);
+}
+
+.services .main .search-results .search .filters .choices > div input {
+   /* TODO : need to be customized to look like the wireframe ! */
+   border: 2px solid var(--secondary-color);
+}
+
+.services .main .search-results .results {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 16px;
+   margin-top: 16px;
+}
+
+.services .main .search-results .results .result {
+   /* display: grid;
+   grid-template-columns: repeat(4, 1fr); */
+   display: flex;
+   justify-content: space-between;
+   /* TODO : choose between the two above */
+   gap: 8px;
+   padding: 16px;
+   border: 1px solid var(--secondary-color);
+   /* box-shadow: 1px 0px 0px 0px var(--secondary-color); */
+   border-radius: 8px;
+   /* background-color: var(--bg-white); */
+}
+
+.services .main .search-results .results .result:hover {
+   /* box-shadow: 0px 1px 0px 1px var(--secondary-color); */
+   scale: 1.002;
+   background-color: var(--bg-color-light);
+}
+
+.services .main .results .result .nom {
+   text-transform: capitalize;
+   color: var(--secondary-color);
+   /* font-weight: bold; */
+}
+
+.services .main .results .result .service {
+   color: var(--primary-color);
+}
+
+.services .main .results .result .disponible {
+}
+
+.services .main .results .result .ville {
+   color: var(--primary-color);
+   text-transform: capitalize;
+}
