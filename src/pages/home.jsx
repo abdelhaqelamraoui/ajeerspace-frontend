@@ -2,18 +2,16 @@ import React from "react";
 import { Navbar } from "../components/header";
 import { Footer } from "../components/footer";
 
-import '../assets/css/home.css';
+import "../assets/css/home.css";
 
-import mapImg from '../assets/img/map.png';
-import bgImg from '../assets/img/bg-img.png';
+import mapImg from "../assets/img/map.png";
+import bgImg from "../assets/img/bg-img.png";
 import lineImg from "../assets/img/line1.png";
 import line2Img from "../assets/img/line1.png"; // FIXME
-import influencerImg from '../assets/img/influencer.png';
-import loopIcon from '../assets/icons/loop.png';
+import influencerImg from "../assets/img/influencer.png";
+import loopIcon from "../assets/icons/loop.png";
 import localizationIcon from "../assets/icons/localization.png";
 import logo from "../assets/icons/ajeerspace-logo.png";
-
-
 
 export const HomePage = (props) => {
    return (
@@ -22,10 +20,10 @@ export const HomePage = (props) => {
          <div className="main">
             <section className="section-1">
                <div className="bg section-1-bg">
-                  <img src={bgImg} alt="" id="bg-1" className="bg-img"/>
-                  <img src={bgImg} alt="" id="bg-2" className="bg-img"/>
-                  <img src={bgImg} alt="" id="bg-3" className="bg-img"/>
-                  <img src={bgImg} alt="" id="bg-4" className="bg-img"/>
+                  <img src={bgImg} alt="" id="bg-1" className="bg-img" />
+                  <img src={bgImg} alt="" id="bg-2" className="bg-img" />
+                  <img src={bgImg} alt="" id="bg-3" className="bg-img" />
+                  <img src={bgImg} alt="" id="bg-4" className="bg-img" />
                </div>
                <div className="content">
                   <div className="search-div">
@@ -81,7 +79,7 @@ export const HomePage = (props) => {
             <section className="section-2">
                <div className="bg section-2-bg">
                   <img src={influencerImg} alt="" className="illustration" />
-                  <img src={lineImg} alt=""  className="bg-line"/>
+                  <img src={lineImg} alt="" className="bg-line" />
                </div>
                <div className="content">
                   <div className="titles">
@@ -96,7 +94,9 @@ export const HomePage = (props) => {
                      </ul>
                   </div>
                   <div className="action">
-                     <button className="btn">Créer un compte</button>
+                     <a href="/register">
+                        <button className="btn">Créer un compte</button>
+                     </a>
                   </div>
                </div>
             </section>
@@ -114,12 +114,12 @@ export const HomePage = (props) => {
                   </div>
                   <div className="text">
                      <div>
-                           <ul>
-                              <li>Différents services</li>
-                              <li>Partout</li>
-                              <li>Gratuit</li>
-                              <li>Rapide</li>
-                           </ul>
+                        <ul>
+                           <li>Différents services</li>
+                           <li>Partout</li>
+                           <li>Gratuit</li>
+                           <li>Rapide</li>
+                        </ul>
                      </div>
                      <div className="logo-div">
                         <div className="vline"></div>
@@ -137,7 +137,11 @@ export const HomePage = (props) => {
                      </div>
                   </div>
                   <div className="action">
-                     <button className="btn bordered outlined">Créer un compte</button>
+                     <a href="/register" className="link">
+                        <button className="btn bordered outlined">
+                           Créer un compte
+                        </button>
+                     </a>
                   </div>
                </div>
             </section>

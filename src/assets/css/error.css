@@ -1,0 +1,9 @@
+.error {
+}
+
+.error .main {
+   text-align: center;
+   font-size: 36px;
+   padding: 16px;
+   color: var(--accent-color);
+}
