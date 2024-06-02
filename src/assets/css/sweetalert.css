@@ -1,0 +1,13 @@
+:root {
+   --swal-btn-confirm: var(--primary-color);
+}
+
+.swal-button--confirm {
+   background-color: var(--primary-color);
+   padding: 10px 40px;
+}
+
+.swal-button--confirm:hover {
+   background-color: var(--primary-color) !important;
+   opacity: 0.9;
+}

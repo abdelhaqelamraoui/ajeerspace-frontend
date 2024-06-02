@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "../components/header";
 import { Footer } from "../components/footer";
 
@@ -10,29 +10,57 @@ import bgImgV from "../assets/img/bg-img-v.png";
 import lineImg from "../assets/img/line1.png";
 import programmerImg from "../assets/img/programmer.png";
 
+import { useCookies } from "react-cookie";
+import { api } from "../api";
+
 export const SigninPage = (props) => {
+   const [cookies, setCookie] = useCookies(["access_token"]);
+
+   const [user, setUser] = useState({
+      email: "",
+      password: "",
+   });
+
+   const signin = (event) => {
+      event.preventDefault();
+      api.post("/login", user)
+         .then((res) => {
+            const accessToken = res.data.accessToken;
+            console.log(accessToken);
+            setCookie("access_token", accessToken);
+            window.location.href = "/profil";
+         })
+         .catch((err) => {
+            //
+         });
+   };
+
    return (
       <div className="signin">
          <Navbar />
          <main className="main">
             <div className="bg">
-               <img src={bgImg} alt="image" id="img-1" className="bg-img"/>
-               <img src={bgImg} alt="image" id="img-2" className="bg-img"/>
-               <img src={bgImg} alt="image" id="img-3" className="bg-img"/>
-               <img src={bgImg} alt="image" id="img-4" className="bg-img"/>
-               <img src={bgImgV} alt="image" id="img-5" className="bg-img"/>
-               <img src={lineImg} alt="image" id="line"/>
+               <img src={bgImg} alt="image" id="img-1" className="bg-img" />
+               <img src={bgImg} alt="image" id="img-2" className="bg-img" />
+               <img src={bgImg} alt="image" id="img-3" className="bg-img" />
+               <img src={bgImg} alt="image" id="img-4" className="bg-img" />
+               <img src={bgImgV} alt="image" id="img-5" className="bg-img" />
+               <img src={lineImg} alt="image" id="line" />
             </div>
 
             <div className="content">
                <div>
-                  <form action="" method="post">
+                  <form action="" method="post" onSubmit={signin}>
                      <input
                         type="email"
                         name="email"
                         id="email"
                         className="input"
                         placeholder="Email"
+                        min={8}
+                        onChange={(e) =>
+                           setUser({ ...user, email: e.target.value })
+                        }
                      />
                      <input
                         type="password"
@@ -40,12 +68,16 @@ export const SigninPage = (props) => {
                         id="password"
                         className="input"
                         placeholder="Password"
+                        min={8}
+                        onChange={(e) =>
+                           setUser({ ...user, password: e.target.value })
+                        }
                      />
                      <button type="submit" className="btn">
                         Se Connecter
                      </button>
                   </form>
-                  <div >
+                  <div>
                      <a href="#" className="link link-secondary">
                         Créer un compte
                      </a>

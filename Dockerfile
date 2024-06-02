@@ -1,10 +1,8 @@
-FROM node:latest AS development
-
-ENV NODE_ENV development
+FROM node:latest
 
 WORKDIR /app/react-app
 
-COPY package.json .
+COPY package*.json .
 
 COPY . .
 

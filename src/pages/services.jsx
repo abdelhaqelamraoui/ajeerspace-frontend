@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/header";
 import { Footer } from "../components/footer";
 
@@ -6,75 +6,86 @@ import "../assets/css/services.css";
 
 import loopIcon from "../assets/icons/loop.png";
 import localizationIcon from "../assets/icons/localization.png";
-import profileIcon from "../assets/icons/profile-blue.png";
-import disponibleIcon from "../assets/icons/disponible.png";
-import whatsappIcon from "../assets/icons/whatsapp.png";
-import eamailIcon from "../assets/icons/email.png";
-import websiteIcon from "../assets/icons/website.png";
-import priceIcon from "../assets/icons/price.png";
 import filterIcon from "../assets/icons/filter.png";
+import { Profile } from "../components/profile";
+import { api } from "../api";
+import { Offre } from "../components/offre";
 
 export const ServicesPage = (props) => {
+   const [search, setSearch] = useState({ service: "", city: "" });
+   const [offers, setOffers] = useState([]);
+   const [profile, setProfile] = useState({});
+
+   const loadSearch = (service, city) => {
+      const url = `/offers?title[like]=${service}&city[like]=${city}`;
+      api.get(url)
+         .then((res) => {
+            setOffers(res.data);
+            //console.log(offers);
+         })
+         .catch((err) => console.error(err));
+   };
+
+   const handleSearchSubmit = (event) => {
+      event.preventDefault();
+      // if (search.service?.length > 0 || search.city?.length > 0) {
+      loadSearch(search.service, search.city);
+      // }
+   };
+
+   useEffect(() => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const params = {};
+      searchParams.forEach((value, key) => {
+         params[key] = value;
+      });
+
+      setSearch(params);
+      const { service, city } = params;
+      loadSearch(service, city);
+   }, []);
+
+   const loadProfile = (profileId) => {
+      console.log("loading profile with id = ", profileId);
+      const url = `/profiles/${profileId}`; // FIXME
+      api.get(url)
+         .then((res) => {
+            setProfile(res.data);
+            console.log(profile);
+         })
+         .catch((err) => console.error(err));
+   };
+
    return (
       <div className="services">
          <Navbar />
          <main className="main">
             <div className="profiles">
-               <div className="profile">
-                  <div className="profile-header">
-                     <img
-                        src={profileIcon}
-                        alt="icon"
-                        className="profile-photo"
-                     />
-                     <div>
-                        <span className="profile-name" id="profile-name">
-                           Said El Maliki
-                        </span>
-                        <span className="profile-service" id="profile-service">
-                           Web Designer
-                        </span>
-                     </div>
-                  </div>
-                  <div className="profile-body">
-                     <div className="iconed-info">
-                        <img src={disponibleIcon} alt="icon" />
-                        <span id="profile-disponible">disponible</span>
-                     </div>
-                     <div className="iconed-info">
-                        <img src={whatsappIcon} alt="icon" />
-                        <span id="profile-disponible">06 11 22 33 44</span>
-                     </div>
-                     <div className="iconed-info">
-                        <img src={localizationIcon} alt="icon" />
-                        <span id="profile-disponible">Errachidia</span>
-                     </div>
-                     <div className="iconed-info">
-                        <img src={eamailIcon} alt="icon" />
-                        <span id="profile-disponible">my-email@gmail.com</span>
-                     </div>
-                     <div className="iconed-info">
-                        <img src={websiteIcon} alt="icon" />
-                        <span id="profile-disponible">my-website.com</span>
-                     </div>
-                     <div className="iconed-info">
-                        <img src={priceIcon} alt="icon" />
-                        <span id="profile-disponible">1000.00 MAD</span>
-                     </div>
-                  </div>
-               </div>
+               {/* TODO : MAP PROFILES */}
+               <Profile profile={profile} />
             </div>
             <div className="search-results">
                <div className="search">
-                  <form action="" method="post" className="">
+                  <form
+                     action=""
+                     method="post"
+                     className=""
+                     onSubmit={handleSearchSubmit}
+                  >
                      <div className="bordered rounded">
                         <div>
                            <img src={loopIcon} alt="" />
                            <input
                               type="search"
                               name="service"
-                              id=""
+                              id="service"
                               placeholder="service"
+                              onChange={(e) =>
+                                 setSearch({
+                                    ...search,
+                                    service: e.target.value,
+                                 })
+                              }
                            />
                         </div>
                         <div className="separator"></div>
@@ -83,8 +94,14 @@ export const ServicesPage = (props) => {
                            <input
                               type="search"
                               name="city"
-                              id=""
+                              id="city"
                               placeholder="ville"
+                              onChange={(e) =>
+                                 setSearch({
+                                    ...search,
+                                    city: e.target.value,
+                                 })
+                              }
                            />
                         </div>
                      </div>
@@ -118,37 +135,13 @@ export const ServicesPage = (props) => {
                   </div>
                </div>
                <div className="results">
-                  <div className="result">
-                     <div className="nom" id="nom">
-                        Said El Maliki
-                     </div>
-                     <div className="service" id="service">
-                        Web Designer
-                     </div>
-                     <div className="disponible iconed-info" id="disponible">
-                        <img src={disponibleIcon} alt="icon" />
-                        <span>disponible</span>
-                     </div>
-                     <div className="ville" id="ville">
-                        Errachidia
-                     </div>
-                  </div>
-
-                  <div className="result">
-                     <div className="nom" id="nom">
-                        Said El Maliki
-                     </div>
-                     <div className="service" id="service">
-                        Web Designer
-                     </div>
-                     <div className="disponible iconed-info" id="disponible">
-                        <img src={disponibleIcon} alt="icon" />
-                        <span>disponible</span>
-                     </div>
-                     <div className="ville" id="ville">
-                        Errachidia
-                     </div>
-                  </div>
+                  {offers.map((offre, index) => {
+                     return (
+                        <div onClick={(e) => loadProfile(offre.profileId)}>
+                           <Offre key={index} offre={offre} />
+                        </div>
+                     );
+                  })}
                </div>
             </div>
          </main>

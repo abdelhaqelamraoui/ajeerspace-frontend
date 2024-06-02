@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "../components/header";
 import { Footer } from "../components/footer";
 
@@ -14,6 +14,14 @@ import localizationIcon from "../assets/icons/localization.png";
 import logo from "../assets/icons/ajeerspace-logo.png";
 
 export const HomePage = (props) => {
+   const [search, setSearch] = useState({ service: "", city: "" });
+
+   const handleSearchSubmit = (event) => {
+      event.preventDefault();
+      if (search.service.length > 0 || search.city.length) {
+         window.location.href = `/services?service=${search.service}&city=${search.city}`;
+      }
+   };
    return (
       <div>
          <Navbar />
@@ -36,15 +44,27 @@ export const HomePage = (props) => {
                         </h3>
                      </div>
                      <div className="search-form">
-                        <form action="" method="post" className="">
+                        <form
+                           action=""
+                           method="post"
+                           className=""
+                           onSubmit={handleSearchSubmit}
+                        >
                            <div className="bordered rounded">
                               <div>
                                  <img src={loopIcon} alt="" />
                                  <input
                                     type="search"
                                     name="service"
-                                    id=""
+                                    id="service"
                                     placeholder="service"
+                                    min={3}
+                                    onChange={(e) =>
+                                       setSearch({
+                                          ...search,
+                                          service: e.target.value,
+                                       })
+                                    }
                                  />
                               </div>
                               <div className="separator"></div>
@@ -55,6 +75,13 @@ export const HomePage = (props) => {
                                     name="city"
                                     id=""
                                     placeholder="ville"
+                                    min={3}
+                                    onChange={(e) =>
+                                       setSearch({
+                                          ...search,
+                                          city: e.target.value,
+                                       })
+                                    }
                                  />
                               </div>
                            </div>

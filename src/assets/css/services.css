@@ -245,6 +245,9 @@
    text-transform: capitalize;
    color: var(--secondary-color);
    /* font-weight: bold; */
+   width: 30ch;
+   max-lines: 1;
+   /* max-width: 30ch; */
 }
 
 .services .main .results .result .service {
@@ -257,4 +260,5 @@
 .services .main .results .result .ville {
    color: var(--primary-color);
    text-transform: capitalize;
+   width: 16ch;
 }
