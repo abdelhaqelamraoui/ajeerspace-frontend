@@ -12,9 +12,10 @@ import programmerImg from "../assets/img/programmer.png";
 
 import { useCookies } from "react-cookie";
 import { api } from "../api";
+import swal from "sweetalert";
 
 export const SigninPage = (props) => {
-   const [cookies, setCookie] = useCookies(["access_token"]);
+   const [cookies, setCookie] = useCookies(["access_token", "user_id"]);
 
    const [user, setUser] = useState({
       email: "",
@@ -26,18 +27,23 @@ export const SigninPage = (props) => {
       api.post("/login", user)
          .then((res) => {
             const accessToken = res.data.accessToken;
+            const userId = res.data.userId;
             console.log(accessToken);
             setCookie("access_token", accessToken);
+            setCookie("user_id", accessToken);
             window.location.href = "/profil";
          })
          .catch((err) => {
-            //
+            swal(
+               "Échec de la connexion",
+               "Veuillez vérifier votre nom d'utilisateur et votre mot de passe, puis réessayez.",
+               "error"
+            );
          });
    };
 
    return (
       <div className="signin">
-         <Navbar />
          <main className="main">
             <div className="bg">
                <img src={bgImg} alt="image" id="img-1" className="bg-img" />
@@ -78,7 +84,7 @@ export const SigninPage = (props) => {
                      </button>
                   </form>
                   <div>
-                     <a href="#" className="link link-secondary">
+                     <a href="/register" className="link link-secondary">
                         Créer un compte
                      </a>
                      <a href="#" className="link link-accent">
@@ -89,7 +95,6 @@ export const SigninPage = (props) => {
                <img src={programmerImg} alt="image" />
             </div>
          </main>
-         <Footer />
       </div>
    );
 };

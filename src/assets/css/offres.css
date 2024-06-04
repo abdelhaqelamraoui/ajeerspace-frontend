@@ -84,3 +84,34 @@
    margin-top: 36px;
    padding: 10px 60px;
 }
+
+.offres table {
+   border-collapse: collapse;
+   border-radius: 4px;
+}
+
+.offres table th {
+   text-align: center;
+   border: 1px solid var(--secondary-color);
+}
+
+.offres table td {
+   border: 1px solid var(--primary-color);
+}
+
+.offres table td,
+th {
+   padding: 10px 20px;
+}
+
+.offres table thead {
+   background-color: var(--secondary-color);
+   color: var(--text-color-white);
+}
+
+.offres table tbody {
+}
+
+.offres table tbody tr:hover {
+   color: var(--secondary-color) !important;
+}

@@ -16,10 +16,10 @@ export const Profile = (props) => {
             <img src={profileIcon} alt="icon" className="profile-photo" />
             <div>
                <span className="profile-name" id="profile-name">
-                  {profile.lastName + " " + profile.firstName}
+                  {profile.name}
                </span>
                <span className="profile-service" id="profile-service">
-                  {profile.service}
+                  {profile.offer?.title}
                </span>
             </div>
          </div>
@@ -30,23 +30,41 @@ export const Profile = (props) => {
             </div>
             <div className="iconed-info">
                <img src={whatsappIcon} alt="icon" />
-               <span id="profile-disponible">{profile.phone}</span>
+               <span id="profile-phone">{profile.phone}</span>
             </div>
             <div className="iconed-info">
-               <img src={localizationIcon} alt="icon" />
-               <span id="profile-disponible">{profile.city}</span>
+               <img
+                  src={localizationIcon}
+                  alt="icon"
+                  style={{ width: "14px" }}
+               />
+               <span id="profile-localization">{profile.offer?.city}</span>
             </div>
             <div className="iconed-info">
                <img src={eamailIcon} alt="icon" />
-               <span id="profile-disponible">{profile.email}</span>
+               <a
+                  id="profile-email"
+                  href={"mailto:" + profile.email}
+                  className="link"
+               >
+                  {profile.email}
+               </a>
             </div>
             <div className="iconed-info">
                <img src={websiteIcon} alt="icon" />
-               <span id="profile-disponible">{profile.website}</span>
+               <a id="profile-website" className="link" href={profile.website}>
+                  {profile.website}
+               </a>
             </div>
             <div className="iconed-info">
                <img src={priceIcon} alt="icon" />
-               <span id="profile-disponible">{profile.price} MAD</span>
+               <span id="profile-price">{profile.offer?.price} MAD</span>
+            </div>
+            <div className="profile-description">
+               <label htmlFor="profile-offer-description">Description</label>
+               <div id="profile-offer-description">
+                  {profile.offer?.description}
+               </div>
             </div>
          </div>
       </div>

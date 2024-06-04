@@ -1,4 +1,3 @@
-
 footer {
    /* margin-top: 400px; */
    /* position: fixed;
@@ -18,8 +17,6 @@ footer .footer div {
    flex: 1;
 }
 
-
-
 .footer .logo {
    width: 40px;
    display: flex;
@@ -33,7 +30,6 @@ footer .footer div {
    color: var(--primary-color-lighter);
    font-size: 20px;
 }
-
 
 footer .copyright {
    background-color: var(--primary-color);

@@ -3,7 +3,20 @@ import React from "react";
 import logo from "../assets/icons/ajeerspace-logo.png";
 import "../assets/css/header.css";
 import loginIcon from "../assets/icons/login.png";
+import { useCookies } from "react-cookie";
 export const Navbar = (props) => {
+   const [cookies, setCookies, removeCookies] = useCookies(["access_token"]);
+
+   const handleClick = (event) => {
+      // if (cookies.access_token) {
+      // logout
+      removeCookies("access_token");
+      window.location.href = "/signin";
+      // } else {
+      //    window.location.href = "/register";
+      // }
+   };
+
    return (
       <header className="header">
          <a href="/" className="logo">
@@ -28,10 +41,18 @@ export const Navbar = (props) => {
                      About Us
                   </a>
                </li>
+
+               {cookies.access_token && (
+                  <li>
+                     <a href="/profil" className="link">
+                        Mon Profil
+                     </a>
+                  </li>
+               )}
                <li>
-                  <a href="/register" className="link">
-                     <button className="btn login-button">
-                        <span>Login</span>
+                  <a href="#" className="link">
+                     <button className="btn login-button" onClick={handleClick}>
+                        <span>{cookies.access_token ? "Logout" : "Login"}</span>
                         <img src={loginIcon} alt="" />
                      </button>
                   </a>

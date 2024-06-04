@@ -16,12 +16,15 @@ export const ServicesPage = (props) => {
    const [offers, setOffers] = useState([]);
    const [profile, setProfile] = useState({});
 
-   const loadSearch = (service, city) => {
+   const loadSearch = (service = "", city = "") => {
       const url = `/offers?title[like]=${service}&city[like]=${city}`;
       api.get(url)
          .then((res) => {
             setOffers(res.data);
-            //console.log(offers);
+            return res.data;
+         })
+         .then((data) => {
+            loadOfferProfile(data[0]);
          })
          .catch((err) => console.error(err));
    };
@@ -45,20 +48,17 @@ export const ServicesPage = (props) => {
       loadSearch(service, city);
    }, []);
 
-   const loadProfile = (profileId) => {
-      console.log("loading profile with id = ", profileId);
-      const url = `/profiles/${profileId}`; // FIXME
+   const loadOfferProfile = (offer) => {
+      const url = `/profiles/${offer.profileId}`;
       api.get(url)
          .then((res) => {
-            setProfile(res.data);
-            console.log(profile);
+            setProfile({ ...res.data, offer: offer });
          })
          .catch((err) => console.error(err));
    };
 
    return (
       <div className="services">
-         <Navbar />
          <main className="main">
             <div className="profiles">
                {/* TODO : MAP PROFILES */}
@@ -135,17 +135,22 @@ export const ServicesPage = (props) => {
                   </div>
                </div>
                <div className="results">
-                  {offers.map((offre, index) => {
+                  {offers.map((offer, index) => {
                      return (
-                        <div onClick={(e) => loadProfile(offre.profileId)}>
-                           <Offre key={index} offre={offre} />
+                        <div
+                           key={index}
+                           onClick={(e) => {
+                              // console.log(offer);
+                              loadOfferProfile(offer);
+                           }}
+                        >
+                           <Offre offre={offer} />
                         </div>
                      );
                   })}
                </div>
             </div>
          </main>
-         {/* <Footer /> */}
       </div>
    );
 };

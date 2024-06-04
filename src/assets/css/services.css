@@ -1,7 +1,10 @@
 .services {
+   height: fit-content;
 }
 
 .services .main {
+   height: 90vh;
+   /* height: 100vh; */
    padding: 24px var(--x-padding);
    display: flex;
    justify-content: space-between;
@@ -13,6 +16,7 @@
    display: grid;
    grid-template-columns: 1fr;
    gap: 16px;
+   height: fit-content;
    /* overflow-y: scroll; */
    /* TODO : fix its height and move and customize the scroller to the left */
 }
@@ -59,6 +63,9 @@
    color: var(--text-color-white);
    padding: 6px 10px;
    text-align: left;
+   max-lines: 1;
+   overflow: hidden;
+   height: 39px;
    border-radius: 2px;
    background-color: var(--secondary-color);
 }
@@ -79,19 +86,47 @@
 }
 
 .services .main .profiles .profile .profile-body .iconed-info img {
-   width: 16px;
+   width: 15px;
 }
 
 .services .main .profiles .profile .profile-body .iconed-info span {
-   font-size: 18px;
+   font-size: 16px;
+   color: var(--text-color-dark) !important;
+}
+.services .main .profiles .profile .profile-body .iconed-info a {
+   color: var(--text-color-dark) !important;
+   text-decoration: none;
+}
+
+.services .main .profiles .profile .profile-description {
+   margin-top: 16px;
+}
+
+.services .main .profiles .profile .profile-description label {
+   color: var(--secondary-color);
+   font-size: 16px;
+}
+
+.services .main .profiles .profile .profile-description div {
+   color: var(--text-color);
+   margin-bottom: 12px;
+   font-size: 16px;
+   text-align: justify;
+   margin-top: 8px;
 }
 
 .services .main .search-results {
    flex: 2;
+   display: flex;
+   flex-direction: column;
 }
 
 .services .main .search-results .search {
    width: 100%;
+   flex: 1;
+}
+
+.search {
 }
 
 .search form {
@@ -216,9 +251,14 @@
 
 .services .main .search-results .results {
    display: grid;
+   flex: auto;
    grid-template-columns: 1fr;
    gap: 16px;
    margin-top: 16px;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   height: 100%;
+   padding-right: 8px;
 }
 
 .services .main .search-results .results .result {
@@ -237,8 +277,8 @@
 
 .services .main .search-results .results .result:hover {
    /* box-shadow: 0px 1px 0px 1px var(--secondary-color); */
-   scale: 1.002;
-   background-color: var(--bg-color-light);
+   scale: 1.001;
+   background-color: var(--bg-color);
 }
 
 .services .main .results .result .nom {

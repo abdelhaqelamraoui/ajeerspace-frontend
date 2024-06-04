@@ -5,10 +5,10 @@ import "../assets/css/home.css";
 
 import logo from "../assets/icons/ajeerspace-logo.png";
 
-export const AboutUsPage = (props) => {
+export const ContactUsPage = (props) => {
    return (
       <div>
-         <div className="main">About US page</div>
+         <div className="main">Contact us</div>
          <div className="fixed-footer">
             <Footer />
          </div>

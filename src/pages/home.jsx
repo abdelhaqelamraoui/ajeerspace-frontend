@@ -24,7 +24,6 @@ export const HomePage = (props) => {
    };
    return (
       <div>
-         <Navbar />
          <div className="main">
             <section className="section-1">
                <div className="bg section-1-bg">

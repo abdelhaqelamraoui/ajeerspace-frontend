@@ -14,24 +14,24 @@ export const Footer = (props) => {
                   <span>Ajeerspace</span>
                </a>
             </div>
-            
+
             <div className="nav-links">
                <div>
                   <ul>
                      <li>
-                        <a href="#">Services</a>
+                        <a href="/services">Services</a>
                      </li>
                      <li>
-                        <a href="#">Contact Up</a>
+                        <a href="/contactus">Contact Us</a>
                      </li>
                      <li>
-                        <a href="#">About Us</a>
+                        <a href="/aboutus">About Us</a>
                      </li>
                   </ul>
                </div>
                <div className="up-div">
                   <a href="#">
-                     <img src={upIcon} alt="go up" className="up-icon"/>
+                     <img src={upIcon} alt="go up" className="up-icon" />
                   </a>
                </div>
             </div>

@@ -44,7 +44,6 @@ export const RegisterPage = (props) => {
    };
    return (
       <div className="register">
-         <Navbar />
          <main className="main">
             <h1 className="title">Créer votre compte</h1>
             <form action="" onSubmit={register}>
@@ -134,7 +133,6 @@ export const RegisterPage = (props) => {
                </div>
             </form>
          </main>
-         <Footer />
       </div>
    );
 };
