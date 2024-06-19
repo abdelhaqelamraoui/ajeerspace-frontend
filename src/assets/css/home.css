@@ -93,7 +93,7 @@
    display: flex;
    gap: 20px;
    align-items: center;
-   justify-content: center;
+   justify-content: space-between;
    border-radius: 8px;
    padding: 1px 18px;
 }
@@ -103,6 +103,7 @@
    align-items: center;
    justify-content: center;
    gap: 14px;
+   flex: 1;
 }
 
 .search-form form > div input::placeholder {
@@ -117,6 +118,7 @@
 
 .search-form form > div input {
    height: 100%;
+   flex: 1;
    border: none;
    height: 45px;
    background-color: transparent;
@@ -129,6 +131,7 @@
 
 .search-form form div .separator {
    width: 1px;
+   max-width: 1px;
    background-color: var(--primary-color);
    height: 80%;
 }

@@ -64,6 +64,11 @@ export const OffresPage = (props) => {
       <div className="offres">
          <main className="main">
             <h1>Offres</h1>
+            <div className="nav-actions">
+               <a href="#" className="btn">
+                  Créer
+               </a>
+            </div>
             <table>
                <thead>
                   <tr>

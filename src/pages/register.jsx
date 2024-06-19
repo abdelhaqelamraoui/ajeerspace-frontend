@@ -26,7 +26,6 @@ export const RegisterPage = (props) => {
          api.post("/register", newUser)
             .then((res) => {
                //
-               console.log(res);
                swal(
                   "Bien inscrit",
                   "Clickez OK pour s'authentifier",

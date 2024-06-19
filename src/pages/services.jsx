@@ -86,6 +86,7 @@ export const ServicesPage = (props) => {
                                     service: e.target.value,
                                  })
                               }
+                              value={search.service}
                            />
                         </div>
                         <div className="separator"></div>
@@ -102,6 +103,7 @@ export const ServicesPage = (props) => {
                                     city: e.target.value,
                                  })
                               }
+                              value={search.city}
                            />
                         </div>
                      </div>
@@ -138,6 +140,7 @@ export const ServicesPage = (props) => {
                   {offers.map((offer, index) => {
                      return (
                         <div
+                           className=""
                            key={index}
                            onClick={(e) => {
                               // console.log(offer);

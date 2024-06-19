@@ -115,3 +115,14 @@ th {
 .offres table tbody tr:hover {
    color: var(--secondary-color) !important;
 }
+
+.nav-actions {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.nav-actions a {
+   padding: 8px 36px;
+   text-decoration: none;
+}

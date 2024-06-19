@@ -90,7 +90,7 @@ export const HomePage = (props) => {
                         </form>
                         <p>
                            Vous prestez un service,{" "}
-                           <a href="#" className="link">
+                           <a href="/register" className="link">
                               poster le ici
                            </a>
                         </p>

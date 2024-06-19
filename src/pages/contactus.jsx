@@ -7,7 +7,7 @@ import logo from "../assets/icons/ajeerspace-logo.png";
 
 export const ContactUsPage = (props) => {
    return (
-      <div>
+      <div className="contactus">
          <div className="main">Contact us</div>
          <div className="fixed-footer">
             <Footer />

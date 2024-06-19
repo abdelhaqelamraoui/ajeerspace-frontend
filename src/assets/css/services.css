@@ -63,11 +63,14 @@
    color: var(--text-color-white);
    padding: 6px 10px;
    text-align: left;
-   max-lines: 1;
-   overflow: hidden;
-   height: 39px;
    border-radius: 2px;
    background-color: var(--secondary-color);
+
+   display: inline-block;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   width: 20ch; /* Adjust the width as needed */
 }
 
 .services .main .profiles .profile .profile-body {
@@ -142,7 +145,7 @@
    display: flex;
    gap: 16px;
    align-items: center;
-   justify-content: center;
+   justify-content: space-between;
    padding: 1px 16px;
    border: none;
 }
@@ -159,6 +162,7 @@
    align-items: center;
    justify-content: center;
    gap: 14px;
+   flex: 1;
 }
 
 .search form > div input::placeholder {
@@ -178,13 +182,14 @@
    background-color: transparent;
    font-size: 16px;
    font-weight: normal;
+   flex: 1;
 }
 
 .search form > div img {
 }
 
 .search form div .separator {
-   width: 1px;
+   max-width: 1px;
    background-color: var(--primary-color);
    height: 80%;
 }
@@ -250,10 +255,10 @@
 }
 
 .services .main .search-results .results {
-   display: grid;
+   /* display: grid; */
    flex: auto;
    grid-template-columns: 1fr;
-   gap: 16px;
+   /* gap: 16px; */
    margin-top: 16px;
    overflow-y: scroll;
    overflow-x: hidden;
@@ -262,6 +267,7 @@
 }
 
 .services .main .search-results .results .result {
+   margin-bottom: 16px;
    /* display: grid;
    grid-template-columns: repeat(4, 1fr); */
    display: flex;
@@ -300,5 +306,6 @@
 .services .main .results .result .ville {
    color: var(--primary-color);
    text-transform: capitalize;
-   width: 16ch;
+   width: 20ch;
+   /* text-align: right; */
 }

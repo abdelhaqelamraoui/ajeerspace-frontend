@@ -5,30 +5,44 @@ import { Footer } from "../components/footer";
 import "../assets/css/profil.css";
 import { api } from "../api";
 import { useCookies } from "react-cookie";
+import swal from "sweetalert";
 
 export const ProfilPage = (props) => {
    const [edit, setEdit] = useState(false);
-   const [profil, setProfil] = useState({});
+   const [profil, setProfil] = useState({
+      name: "",
+      phone: "",
+      email: "",
+      website: "",
+   });
    const [cookies] = useCookies(["access_token"]);
 
    const nameRef = useRef();
    const emailRef = useRef();
-   const addressRef = useRef();
    const phoneRef = useRef();
    const websiteRef = useRef();
 
    const updateProfil = (event) => {
       //
       event.preventDefault();
-      api.put("/profil", profil)
+      // const newProfile = {
+      //    name: nameRef.current.value,
+      //    email: emailRef.current.value,
+      //    phone: phoneRef.current.value,
+      //    website: websiteRef.current.value,
+      // };
+      api.put("/profiles", profil)
          .then((res) => {
-            //
-            //
+            setProfil(profil);
             setEdit(false);
+            swal(
+               "Profil bien modifié",
+               "Clickez OK pour s'authentifier",
+               "success"
+            );
          })
          .catch((err) => {
-            //
-            //
+            console.error(err);
          });
    };
 
@@ -51,7 +65,6 @@ export const ProfilPage = (props) => {
             // addressRef.current.value = res.data.address;
             // phoneRef.current.value = res.data.phone;
             // websiteRef.current.value = res.data.website;
-            console.log(res.data);
          })
          .catch((err) => {
             console.log(err);
@@ -83,6 +96,10 @@ export const ProfilPage = (props) => {
                         id="titre"
                         readOnly={!edit}
                         value={profil.name}
+                        onChange={(e) =>
+                           setProfil({ ...profil, name: e.target.value })
+                        }
+                        // ref={nameRef}
                      />
                   </div>
 
@@ -94,6 +111,10 @@ export const ProfilPage = (props) => {
                         id="phone"
                         readOnly={!edit}
                         value={profil.phone}
+                        // ref={phoneRef}
+                        onChange={(e) =>
+                           setProfil({ ...profil, phone: e.target.value })
+                        }
                      />
                   </div>
 
@@ -105,6 +126,10 @@ export const ProfilPage = (props) => {
                         id="email"
                         readOnly={!edit}
                         value={profil.email}
+                        // ref={emailRef}
+                        onChange={(e) =>
+                           setProfil({ ...profil, email: e.target.value })
+                        }
                      />
                   </div>
 
@@ -116,6 +141,10 @@ export const ProfilPage = (props) => {
                         id="website"
                         readOnly={!edit}
                         value={profil.website}
+                        // ref={websiteRef}
+                        onChange={(e) =>
+                           setProfil({ ...profil, website: e.target.value })
+                        }
                      />
                   </div>
                </div>

@@ -7,8 +7,13 @@ import logo from "../assets/icons/ajeerspace-logo.png";
 
 export const AboutUsPage = (props) => {
    return (
-      <div>
-         <div className="main">About US page</div>
+      <div className="aboutus">
+         <div className="main">
+            <div>About us here</div>
+            <div>
+               <img src={logo} alt="logo" />
+            </div>
+         </div>
          <div className="fixed-footer">
             <Footer />
          </div>

@@ -30,7 +30,7 @@ export const SigninPage = (props) => {
             const userId = res.data.userId;
             console.log(accessToken);
             setCookie("access_token", accessToken);
-            setCookie("user_id", accessToken);
+            setCookie("user_id", userId);
             window.location.href = "/profil";
          })
          .catch((err) => {
