@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Navbar } from "../components/header";
-import { Footer } from "../components/footer";
 
 import "../assets/css/profil.css";
 import { api } from "../api";
@@ -10,28 +8,27 @@ import swal from "sweetalert";
 export const ProfilPage = (props) => {
    const [edit, setEdit] = useState(false);
    const [profil, setProfil] = useState({
+      id: "",
       name: "",
       phone: "",
       email: "",
       website: "",
    });
-   const [cookies] = useCookies(["access_token"]);
+   const [cookies, setCookies] = useCookies(["access_token"]);
 
-   const nameRef = useRef();
-   const emailRef = useRef();
-   const phoneRef = useRef();
-   const websiteRef = useRef();
+   // const nameRef = useRef();
+   // const emailRef = useRef();
+   // const phoneRef = useRef();
+   // const websiteRef = useRef();
 
    const updateProfil = (event) => {
-      //
       event.preventDefault();
-      // const newProfile = {
-      //    name: nameRef.current.value,
-      //    email: emailRef.current.value,
-      //    phone: phoneRef.current.value,
-      //    website: websiteRef.current.value,
-      // };
-      api.put("/profiles", profil)
+      console.log(cookies.access_token);
+      api.put(`/profiles/${profil.id}`, profil, {
+         headers: {
+            Authorization: `Bearer ${cookies.access_token}`,
+         },
+      })
          .then((res) => {
             setProfil(profil);
             setEdit(false);
@@ -60,6 +57,7 @@ export const ProfilPage = (props) => {
       })
          .then((res) => {
             setProfil(res.data);
+            setCookies("profile_id", res.data.id);
             // nameRef.current.value = res.data.name;
             // emailRef.current.value = res.data.email;
             // addressRef.current.value = res.data.address;
@@ -80,7 +78,7 @@ export const ProfilPage = (props) => {
                   <a href="#" className="link" onClick={(e) => setEdit(!edit)}>
                      Modifier mon profil
                   </a>
-                  <a href={`offres?profileId=${profil.id}`} className="link">
+                  <a href={`offres`} className="link">
                      Mes offres
                   </a>
                </div>

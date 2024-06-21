@@ -12,14 +12,13 @@ export const OffresPage = (props) => {
    const [offres, setOffres] = useState([]);
    const [cookies] = useCookies(["access_token"]);
 
-   const location = useLocation();
-   const queryParams = new URLSearchParams(location.search);
-   const profileId = queryParams.get("profileId");
+   // const location = useLocation();
+   // const queryParams = new URLSearchParams(location.search);
+   // const profileId = queryParams.get("profileId");
 
-   console.log(profileId);
 
    useEffect(() => {
-      api.get(`/offers?profileId=${profileId}`)
+      api.get(`/offers?profileId=${cookies.profile_id}`)
          .then((res) => {
             console.log(res.data);
             setOffres(res.data);
@@ -65,7 +64,7 @@ export const OffresPage = (props) => {
          <main className="main">
             <h1>Offres</h1>
             <div className="nav-actions">
-               <a href="#" className="btn">
+               <a href="/create-offer" className="btn">
                   Créer
                </a>
             </div>

@@ -11,6 +11,8 @@ export const Navbar = (props) => {
       // if (cookies.access_token) {
       // logout
       removeCookies("access_token");
+      removeCookies("user_id");
+      removeCookies("profile_id");
       window.location.href = "/signin";
       // } else {
       //    window.location.href = "/register";

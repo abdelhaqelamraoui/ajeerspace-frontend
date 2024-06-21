@@ -13,6 +13,7 @@ import { ProfilPage } from "./pages/profil";
 import { Navbar } from "./components/header";
 import { AboutUsPage } from "./pages/aboutus";
 import { ContactUsPage } from "./pages/contactus";
+import { CreateOfferPage } from "./pages/create-offre";
 
 function App() {
    return (
@@ -29,6 +30,7 @@ function App() {
                <Route path="/offres" element={<OffresPage />} />
                <Route path="/aboutus" element={<AboutUsPage />} />
                <Route path="/contactus" element={<ContactUsPage />} />
+               <Route path="/create-offer" element={<CreateOfferPage />} />
                <Route path="/*" element={<ErrorPage />} />
             </Routes>
          </BrowserRouter>
