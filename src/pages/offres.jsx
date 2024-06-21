@@ -16,7 +16,6 @@ export const OffresPage = (props) => {
    // const queryParams = new URLSearchParams(location.search);
    // const profileId = queryParams.get("profileId");
 
-
    useEffect(() => {
       api.get(`/offers?profileId=${cookies.profile_id}`)
          .then((res) => {
@@ -33,7 +32,6 @@ export const OffresPage = (props) => {
    };
 
    const deleteOffre = (id) => {
-      console.log("id to del: ", id);
       swal({
          title: "Supprimer votre offre?",
          text: "Apreès la suppression, votre n'est plus publié!",
